@@ -106,6 +106,8 @@ async function bootstrap() {
 }
 ```
 
+> **Important**: Global pipe relies on TypeScript's `design:paramtypes` metadata to detect DTO classes. See [Requirements for Global Pipe](#requirements-for-global-pipe) section.
+
 ### With Valibot
 
 ```typescript
@@ -325,6 +327,53 @@ Any validator implementing the [standard-schema](https://github.com/standard-sch
 - Node.js >= 18
 - NestJS >= 10.0.0
 - TypeScript >= 5.0
+
+### Requirements for Global Pipe
+
+When using `StandardValidationPipe` as a global pipe (without explicitly passing a schema), it relies on TypeScript's `design:paramtypes` metadata to detect the DTO class and its schema. This is the same mechanism used by NestJS's built-in `ValidationPipe`.
+
+**Required `tsconfig.json` settings:**
+
+```json
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}
+```
+
+**Build tool compatibility:**
+
+| Build Tool | Support | Configuration |
+|------------|---------|---------------|
+| `tsc` | Supported | Default with above tsconfig |
+| `SWC` | Supported | Requires `decoratorMetadata: true` in `.swcrc` |
+| `esbuild` | Not supported | Does not emit decorator metadata |
+| `Vite` / `Vitest` | Not supported | Uses esbuild internally |
+
+**SWC configuration (`.swcrc`):**
+
+```json
+{
+  "jsc": {
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    }
+  }
+}
+```
+
+**If your build tool doesn't support decorator metadata**, use explicit schema passing instead:
+
+```typescript
+// Instead of relying on global pipe detection:
+@Body() dto: CreateUserDto
+
+// Explicitly pass the schema:
+@Body(new StandardValidationPipe(CreateUserSchema)) dto: CreateUserDto
+```
 
 ## Contributing
 
