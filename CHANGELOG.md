@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/mag123c/nestjs-stdschema/compare/v0.1.2...v0.1.3) (2025-12-02)
+
+
+### Bug Fixes
+
+* **ci:** use PAT token for release-please to trigger CI ([8e155cb](https://github.com/mag123c/nestjs-stdschema/commit/8e155cb340ba900e3829c9cc397dcdf6512b5e9b))
+
 ## [0.1.2](https://github.com/mag123c/nestjs-stdschema/compare/v0.1.1...v0.1.2) (2025-12-02)
 
 
