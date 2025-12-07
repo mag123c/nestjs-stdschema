@@ -380,8 +380,9 @@ When using `StandardValidationPipe` as a global pipe (without explicitly passing
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
+Interested in adding support for a new validator? Check out [ADDING_VALIDATORS.md](./ADDING_VALIDATORS.md).
 
 ## License
 
