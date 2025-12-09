@@ -20,7 +20,7 @@ jobs:
           release-type: node
 
       # Publish to npm when a release is created
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         if: ${{ steps.release.outputs.release_created }}
 
       - uses: pnpm/action-setup@v4
@@ -28,7 +28,7 @@ jobs:
         with:
           version: 9
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: 20
