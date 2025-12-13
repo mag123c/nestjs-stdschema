@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/mag123c/nestjs-stdschema/compare/v0.1.3...v0.2.0) (2025-12-13)
+
+
+### Features
+
+* add GraphQL support with StandardValidationPipe ([b8af224](https://github.com/mag123c/nestjs-stdschema/commit/b8af224c7061d4b91901633215fd920485eb4bb3))
+
+
+### Bug Fixes
+
+* use explicit type exports for esbuild compatibility ([a57254b](https://github.com/mag123c/nestjs-stdschema/commit/a57254ba56a0766b5f8fbfdc7b579ba0c58534ae))
+
 ## [0.1.3](https://github.com/mag123c/nestjs-stdschema/compare/v0.1.2...v0.1.3) (2025-12-02)
 
 
