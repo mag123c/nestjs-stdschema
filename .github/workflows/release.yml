@@ -2,55 +2,29 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v6
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm build
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Test
-        run: pnpm test
-
-  publish:
-    needs: test
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      id-token: write
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
@@ -62,12 +36,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Publish to npm
-        run: pnpm publish --access public --no-git-checks
+      - name: Release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          generate_release_notes: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
