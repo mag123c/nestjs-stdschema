@@ -1,3 +1,13 @@
+## [0.2.1](https://github.com/mag123c/nestjs-stdschema/compare/v0.2.0...v0.2.1) (2025-12-13)
+
+
+### Bug Fixes
+
+* add Codecov token for protected branches ([0111bd4](https://github.com/mag123c/nestjs-stdschema/commit/0111bd4fb44ba7d9a0ff526d1251c6702fc83d50))
+* separate npm publish from semantic-release ([17cb16e](https://github.com/mag123c/nestjs-stdschema/commit/17cb16e8e5638f800db57b043b3b794be2b7ccd9))
+* use GH_TOKEN (PAT) to bypass branch protection rules ([87d14fd](https://github.com/mag123c/nestjs-stdschema/commit/87d14fd1fdcd01a85b581773610ab979a6e75bd9))
+* use Node 22 for semantic-release and add Codecov integration ([c169800](https://github.com/mag123c/nestjs-stdschema/commit/c16980014e23190ce674217ba0e6dd6c064cd813))
+
 # Changelog
 
 ## [0.2.0](https://github.com/mag123c/nestjs-stdschema/compare/v0.1.3...v0.2.0) (2025-12-13)
