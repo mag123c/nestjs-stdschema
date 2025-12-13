@@ -43,7 +43,8 @@
     "dto",
     "pipe",
     "openapi",
-    "swagger"
+    "swagger",
+    "graphql"
   ],
   "author": "mag123c (https://github.com/mag123c)",
   "license": "MIT",
@@ -62,6 +63,9 @@
   },
   "peerDependenciesMeta": {
     "@nestjs/swagger": {
+      "optional": true
+    },
+    "@nestjs/graphql": {
       "optional": true
     }
   },
