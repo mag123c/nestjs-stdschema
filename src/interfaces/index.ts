@@ -1,9 +1,9 @@
-export {
+export type {
   StandardSchemaV1,
   InferInput,
   InferOutput,
 } from './standard-schema.interface';
-export {
+export type {
   StandardValidationPipeOptions,
   ErrorHttpStatusCode,
 } from './validation-options.interface';

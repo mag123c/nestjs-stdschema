@@ -189,6 +189,93 @@ async function bootstrap() {
 
 > **Note**: The serializer strips extra fields by leveraging the validator's default behavior. Both Zod and Valibot strip unknown keys by default. If your validator preserves extra keys, use its strict/strip mode explicitly.
 
+## GraphQL Support
+
+`StandardValidationPipe` works with `@nestjs/graphql` out of the box:
+
+### Route-Level Validation
+
+```typescript
+import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import { StandardValidationPipe } from '@mag123c/nestjs-stdschema';
+import { z } from 'zod';
+
+const CreateUserSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+});
+
+@Resolver(() => User)
+export class UserResolver {
+  @Mutation(() => User)
+  createUser(
+    @Args('input', { type: () => CreateUserInput }, new StandardValidationPipe(CreateUserSchema))
+    input: CreateUserInput,
+  ) {
+    return this.userService.create(input);
+  }
+}
+```
+
+### Global Pipe with GraphQL
+
+When using global pipe with GraphQL, set `validateCustomDecorators: true` because `@Args()` uses `metadata.type === 'custom'`:
+
+```typescript
+import { StandardValidationPipe } from '@mag123c/nestjs-stdschema';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(
+    new StandardValidationPipe({ validateCustomDecorators: true })
+  );
+
+  await app.listen(3000);
+}
+```
+
+### GraphQL Error Handling
+
+GraphQL converts `HttpException` to GraphQL errors. For better error formatting, use Apollo's `formatError`:
+
+```typescript
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+
+@Module({
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      formatError: (error) => {
+        const originalError = error.extensions?.originalError as any;
+        return {
+          message: originalError?.message ?? error.message,
+          code: error.extensions?.code ?? 'INTERNAL_SERVER_ERROR',
+          errors: originalError?.errors ?? undefined,
+        };
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+This produces cleaner error responses:
+
+```json
+{
+  "errors": [{
+    "message": "Validation failed",
+    "code": "BAD_REQUEST",
+    "errors": [
+      { "path": ["email"], "message": "Invalid email" }
+    ]
+  }]
+}
+```
+
 ## API Reference
 
 ### StandardValidationPipe

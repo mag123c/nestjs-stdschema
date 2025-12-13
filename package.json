@@ -43,7 +43,8 @@
     "dto",
     "pipe",
     "openapi",
-    "swagger"
+    "swagger",
+    "graphql"
   ],
   "author": "mag123c (https://github.com/mag123c)",
   "license": "MIT",
@@ -63,17 +64,25 @@
   "peerDependenciesMeta": {
     "@nestjs/swagger": {
       "optional": true
+    },
+    "@nestjs/graphql": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@apollo/server": "^5.2.0",
+    "@as-integrations/express5": "^1.1.2",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.39.1",
+    "@nestjs/apollo": "^13.2.1",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
+    "@nestjs/graphql": "^13.2.0",
     "@nestjs/platform-express": "^11.1.9",
     "@nestjs/swagger": "^11.2.3",
     "@nestjs/testing": "^11.0.0",
+    "@swc/core": "^1.15.4",
     "@types/node": "^24.10.1",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8",
@@ -83,6 +92,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.0.0",
     "globals": "^16.5.0",
+    "graphql": "^16.12.0",
     "husky": "^9.1.7",
     "prettier": "^3.0.0",
     "reflect-metadata": "^0.2.0",
@@ -91,6 +101,7 @@
     "tsup": "^8.0.0",
     "typescript": "^5.6.0",
     "typescript-eslint": "^8.48.0",
+    "unplugin-swc": "^1.5.9",
     "valibot": "^1.0.0",
     "vitest": "^2.0.0",
     "zod": "^4.1.13"
