@@ -4,6 +4,7 @@ Universal schema validation for NestJS using the [standard-schema](https://githu
 
 [![npm version](https://img.shields.io/npm/v/@mag123c/nestjs-stdschema.svg)](https://www.npmjs.com/package/@mag123c/nestjs-stdschema)
 [![CI](https://github.com/mag123c/nestjs-stdschema/actions/workflows/ci.yml/badge.svg)](https://github.com/mag123c/nestjs-stdschema/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/mag123c/nestjs-stdschema/graph/badge.svg)](https://codecov.io/gh/mag123c/nestjs-stdschema)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![](https://img.shields.io/npm/d18m/@mag123c/nestjs-stdschema)
 ![](https://img.shields.io/github/last-commit/mag123c/nestjs-stdschema)
