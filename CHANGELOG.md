@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/mag123c/nestjs-stdschema/compare/v0.2.1...v0.2.2) (2025-12-13)
+
+
+### Bug Fixes
+
+* let semantic-release handle npm publish ([50ff0f0](https://github.com/mag123c/nestjs-stdschema/commit/50ff0f02f97e84838224ab18eb1cfd47fb5e0e2c))
+
 ## [0.2.1](https://github.com/mag123c/nestjs-stdschema/compare/v0.2.0...v0.2.1) (2025-12-13)
 
 
