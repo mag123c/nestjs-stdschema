@@ -8,7 +8,10 @@ import {
   Type,
 } from '@nestjs/common';
 import { SCHEMA_METADATA_KEY } from '../constants';
-import { StandardSchemaV1, StandardValidationPipeOptions } from '../interfaces';
+import type {
+  StandardSchemaV1,
+  StandardValidationPipeOptions,
+} from '../interfaces';
 
 /**
  * Validation pipe that uses Standard Schema for validation
