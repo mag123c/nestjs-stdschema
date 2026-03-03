@@ -1,3 +1,6 @@
+***(This OSS is listed as the default feature of NestJS v12 and is no longer maintained.)***
+
+
 # @mag123c/nestjs-stdschema
 
 Universal schema validation for NestJS using the [standard-schema](https://github.com/standard-schema/standard-schema) specification.
