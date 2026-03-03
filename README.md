@@ -1,5 +1,7 @@
 ***(This OSS is listed as the default feature of NestJS v12 and is no longer maintained.)***
 
+---
+
 
 # @mag123c/nestjs-stdschema
 
